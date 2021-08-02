@@ -1,0 +1,132 @@
+# class Player_Health
+
+Class that manages the player health.
+Responsible for dealing damage to the player, healing, and playing necessary effects.
+
+## Class-specific enums
+
+### HealthMode
+- InsantDeath
+- Invincible
+- Mortal
+
+## Methods
+- void add_OnDeathImminent(Player_Health.PlayerDeathImminent value)
+- void add_OnPlayerDamageReceived(Player_Health.PlayerDamageReceived value)
+- void add_OnPlayerDeath(Player_Health.PlayerDeath value)
+- void Awake()
+- IEnumerator CoBrightenDeathSave()
+- IEnumerator CoFadeDeathVignette(float deathTime)
+- IEnumerator CoFadeVignette()
+- IEnumerator CoLowPassFilter(bool enableLow)
+- IEnumerator CoRegenHealth(float waitSeconds)
+- IEnumerator CoWaitAndGoToRespawn()
+- IEnumerator CoWaitAndReloadScene()
+- void Death()
+- void EffectsBloodied()
+- void EffectsCritHit()
+- void LifeSavingDamageDealt()
+- void OnDisable()
+- void OnEnable()
+- void OnPuppetDeath(PuppetMaster puppet)
+- void OnReceivedCollision(Collision collison, float relVelocitySqr, EnemyCollisionRelay.BodyPart part, bool isStay = false)
+- void OnReceivedDamage([Attack](/class-reference/StressLevelZero/Combat/Attack.md) attack, PlayerDamageReceiver.BodyPart part)
+- void Reaction(float damage)
+- void remove_OnDeathImminent(Player_Health.PlayerDeathImminent value)
+- void remove_OnPlayerDamageReceived(Player_Health.PlayerDamageReceived value)
+- void remove_OnPlayerDeath(Player_Health.PlayerDeath value)
+- void ResetVigMaterial()
+- void SetFullHealth()
+- void SPAWNSTART()
+- void Start()
+- void STARTDATA()
+- void StartHealthRegenerationAndVignette(float regenWait)
+- void TAKEDAMAGE(float damage, bool crit = false)
+- void TELEPORTONESECOND()
+- void ToggleHealthFX()
+- void ToggleInstantDeathMode(bool toggleOn)
+- void Update()
+- void UpdateHealth(float amount)
+
+## Fields
+- bool alive
+- Vector3 ang_vel
+- bool bloodied
+- BodyVitals bodyVitals
+- SceneManager boneworks_SceneManager
+- int brightenID
+- Color brightRed
+- ComponentCache<Player_Health> Cache
+- int colorID
+- Il2CppReferenceArray<Collider> col_crit
+- float currDeathTime
+- float currentHealthRegenDuration
+- float currLPF
+- float curr_Health
+- bool damageFromAttack
+- bool damageFromImpact
+- Color darkRed
+- bool deathIsImminent
+- Coroutine deathRoutine
+- float deathTimeAmount
+- float deathTimeReduction
+- bool displayHealthFX
+- GameObject fx_bloodied
+- GameObject fx_crit
+- GameObject fx_death
+- Control_GlobalTime globalTimeControl
+- float healthFromDeathSave
+- Player_Health.HealthMode healthMode
+- TMP_Text healthText
+- float highLPF
+- int hits
+- float imm_death_t
+- int innerD
+- float instaDeathTimeAmount
+- bool invulnerable
+- bool isFadingVignette
+- bool isInstaDying
+- float lowLPF
+- Coroutine lowPassAudioRoutine
+- MaterialPropertyBlock matPropBlock
+- float max_Health
+- float mod_Attack
+- float mod_crit
+- float mod_Impact
+- float mod_Minimal
+- [AttackType(/class-reference/StressLevelZero/Combat/AttackType.md)] mod_Type
+- float mod_TypeDamage
+- LayerMask msk_Impact
+- Player_Health.PlayerDeathImminent OnDeathImminent
+- Player_Health.PlayerDamageReceived OnPlayerDamageReceived
+- Player_Health.PlayerDeath OnPlayerDeath
+- int outerID
+- float per_Bloodied
+- Player_Health.HealthMode prevHealthMode
+- Il2CppReferenceArray<GameObject> prop_Hero
+- Rigidbody rb_enemyBody
+- bool reacting
+- bool regenerating
+- Coroutine regenRoutine
+- bool reloadLevelOnDeath
+- int req_hit_count
+- float routineTickRate
+- AnimationCurve shutEyeCurve
+- int shutEyesID
+- bool slowMoOnDeath
+- bool spawnHeroProps
+- Il2CppReferenceArray<Transform> spawn_points
+- float thr_Impact
+- float thr_React
+- float totalRegenDuration
+- bool useMask
+- bool useType
+- Vector3 vel
+- Coroutine vignetteRoutine
+- MeshRenderer vigRend
+- bool visDebug
+- float wait_Regen_t
+- Audio_Manager _audioManager
+- ComponentCache<Player_Health> _cache
+- HeadSFX _headSfx
+- RigManager _rigManager
