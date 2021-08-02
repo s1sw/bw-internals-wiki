@@ -51,7 +51,7 @@ def create_namespaces():
         # Add files to namespaces
         for file in files:
             namespace = get_namespace_from_path(path)
-            full_file_path = "/class-reference/" + "/".join(path) + "/" + file
+            full_file_path = "/" + "/".join(path) + "/" + file
             file_name = file.split(".")[0]
 
             if file_name in namespace.children:
