@@ -53,11 +53,8 @@ def create_namespaces():
             namespace = get_namespace_from_path(path)
             full_file_path = "/class-reference/" + "/".join(path) + "/" + file
             file_name = file.split(".")[0]
-            print(file_name)
-            print(namespace.name)
 
             if file_name in namespace.children:
-                print("set path")
                 namespace.children[file_name].file_path = full_file_path
             else:
                 get_namespace_from_path(path).files.append(full_file_path)
@@ -81,7 +78,6 @@ def generate_namespace_docs(namespace, indent_level = 1):
 namespaces = {}
 
 create_namespaces()
-print(namespaces)
 
 template_str = ""
 
