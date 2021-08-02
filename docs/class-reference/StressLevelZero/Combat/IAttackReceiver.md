@@ -4,4 +4,4 @@ Generic interface for receiving attacks.
 
 ## Methods
 
-- void ReceiveAttack([StressLevelZero.Combat.Attack](/class-reference/StressLevelZero/Combat/Attack.md))
+- void ReceiveAttack([Attack](/class-reference/StressLevelZero/Combat/Attack.md))

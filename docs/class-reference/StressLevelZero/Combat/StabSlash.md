@@ -13,6 +13,6 @@ Class that handles stabbing of various entities.
 ## Fields
 - StabSlash.BladeAudio bladeAudio
 - Rigidbody rb
-- Il2CppReferenceArray<StabSlash.StabBlade> slashBlades
+- Il2CppReferenceArray<StabSlash.SlashBlade> slashBlades
 - Il2CppReferenceArray<StabSlash.StabPoint> stabPoints
 - InteractableHost _host

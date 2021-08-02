@@ -6,6 +6,7 @@ class Namespace():
         self.name = name
         self.children = {}
         self.files = []
+        self.is_class = False
 
     def __str__(self):
         return f"Namespace({self.name}, children: {str(self.children)}, files: {str(self.files)})"
@@ -35,29 +36,52 @@ def create_namespaces():
                 else:
                     last_namespace = namespaces[el]
             else:
-                this_namespace = Namespace(el)
-                last_namespace.children[el] = this_namespace
-                last_namespace = this_namespace
+                if el not in last_namespace.children:
+                    this_namespace = Namespace(el)
+                    
+                    if any(file.split("/")[-1].split(".")[0] == el for file in last_namespace.files):
+                        this_namespace.is_class = True
+                    
+                    last_namespace.children[el] = this_namespace
+                    last_namespace = this_namespace
+                else:
+                    last_namespace = last_namespace.children[el]
+
 
         # Add files to namespaces
         for file in files:
-            get_namespace_from_path(path).files.append("/" + "/".join(path) + "/" + file)
+            namespace = get_namespace_from_path(path)
+            full_file_path = "/class-reference/" + "/".join(path) + "/" + file
+            file_name = file.split(".")[0]
+            print(file_name)
+            print(namespace.name)
+
+            if file_name in namespace.children:
+                print("set path")
+                namespace.children[file_name].file_path = full_file_path
+            else:
+                get_namespace_from_path(path).files.append(full_file_path)
 
 def generate_namespace_docs(namespace, indent_level = 1):
     global generated_str
 
     indent_str = "  " * indent_level
     for k, child in namespace.children.items():
+        if child.is_class:
+            continue
         generated_str += indent_str + f"* {child.name}\n"
         generate_namespace_docs(child, indent_level + 1)
 
     for file in namespace.files:
         file_name = file.split("/")[-1].split(".")[0]
         generated_str += indent_str + f"* [{file_name}]({file})\n"
+        if file_name in namespace.children:
+            generate_namespace_docs(namespace.children[file_name], indent_level + 1)
 
 namespaces = {}
 
 create_namespaces()
+print(namespaces)
 
 template_str = ""
 

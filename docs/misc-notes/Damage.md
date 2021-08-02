@@ -28,4 +28,13 @@ Here's a quick dump of everything I've figured out about damage so far:
 - If you just need the raw damage value, the `GenericAttackReceiver` component has a UnityEvent with the damage passed in as a float
 - If you need more, hook one of the components above
 - Player damage is applied by just subtracting the damage value of an attack from the player's health
-- Damage multipliers appear to be applied somewhere before `ReceiveAttack` is called, currently unsure where
+- ~~Damage multipliers appear to be applied somewhere before `ReceiveAttack` is called, currently unsure where~~ This doesn't seem right, looking at decompiled StabSlash + Projectile - they don't do anything special
+- In Ghidra you can find anything that deals damage by looking at the xrefs for `ExecuteEvents_EventFunction_1_StressLevelZero_Combat_IAttackReceiver__Class*`
+- Somewhere around that you'll probably find really messy code setting members of a random type with lots of offsets, generally making not much sense. Retype that variable as `Attack__Boxed*` and it'll make sense
+
+- Damage multipliers found experimentally:
+| Body part | Multiplier |
+| --------- | ---------- |
+| Head      | 4          |
+| Chest     | 1          |
+| Hand      | 0.6        |
