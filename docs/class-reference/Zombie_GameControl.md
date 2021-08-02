@@ -1,0 +1,219 @@
+# class Zombie_GameControl
+
+Class that controls and manages the Zombie Survival (a.k.a. Zombie Warehouse) game mode.
+
+Zombie Warehouse uses this script with hard-coded functions for the particular map it is meant to be played on.
+Enemies in the level are added by using the Arena_EnemyReference class, then stored in a list of active enemies.
+
+A key oddity to take note of, is that the RigManager is referenced six times for breakable glass planes.
+
+## Class-specific enums
+
+### Difficulty
+- EASY
+- HARD
+- HARDER
+- HARDEST
+- MEDIUM
+
+### GameMode
+- BLADES_N_BLUNTS
+- CUSTOM
+- LOCKOUT
+- SURVIVAL
+- THE_CURE
+
+### Loadout
+- CLEAVER
+- COMBAT
+- HAMMER
+
+## Methods
+- void Awake()
+- void CheckSlotsAndDrop(InteractableHost host)
+- void CheckZombieAchievements()
+- IEnumerator CoCollectAnimation(Vector3 pos)
+- IEnumerator CoFindTheLastEnemy()
+- IEnumerator CoGameTimer()
+- IEnumerator CoLimitSlowMo([Optional] float delay = 1.0f)
+- IEnumerator CoResetTimer(float time)
+- IEnumerator CoSingleEnemyTimer()
+- IEnumerator CoSpawnEnemies()
+- IEnumerator CoSpawnReplacementEnemy(Arena_EnemyReference replaceEnemy)
+- IEnumerator CoStartTimer() 
+- IEnumerator CoWaitAndStartNextWave()
+- void CreateNewWave([BaseWaveProfile]() wave)
+- void EnablePrevPage()
+- void ForceWaveEnd()
+- void GameOverCountdown(float time)
+- Transform GetSpawnPoint()
+- void GrabSlots()
+- void IncreaseEnemyCountCureMode()
+- void LockoutAchCheck(int currDoor)
+- SpawnableObject LookUpEnemyObjectByType(Arena_EnemyReference.EnemyType enemyType)
+- void OnDisable()
+- void OnEnable()
+- void OnPuppetDeath(PuppetMaster puppet)
+- void OnTriggerEnter(Collider other)
+- void OnTriggerExit(Collider other)
+- Arena_EnemyReference.EnemyType RandomizeFromList()
+- void RELOADLEVEL()
+- void RewardAmmo(int awardType)
+- void SetGameMode(int mode)
+- void SetPrevPage(GameObject go)
+- void SlowTimeToggle(float step)
+- void SpawnHealthPackOnChance(Arena_EnemyReference enemyRef)
+- void SpawnTrigger(Zombie_PlayerTrigger trig)
+- void Start()
+- void StartNextWave()
+- void StartSelectedMode()
+- void StartSpawnRoutine()
+- void StopAllSpawnRoutines()
+- void StopWaitingAndSpawnNow()
+- void SwapLoadoutScreen()
+- void ToggleDifficulty()
+- void ToggleEnemyType(int enemyType)
+- void ToggleLoadout(int loadIndex)
+- void ToggleLoadoutStartButton()
+- void ToggleObj(GameObject go)
+- void TogglePlayerHealth()
+- void ToggleSlowMo()
+- void ToggleSpawnTriggers(bool enable)
+
+## Fields
+- int activeEnemyCount
+- List<Arena_EnemyReference> activeEnemyList
+- int addEnemyCount
+- Il2CppReferenceArray<GameObject> ammoPickups
+- GameObject axeLoadout
+- GameObject butcherLoadout
+- Il2CppReferenceArray<Image> checkSprites
+- AudioClip collectAudioClip
+- GameObject combatLoadout
+- Transform containerSpawn
+- Zombie_PlayerTrigger containerTriggerSpawn
+- ControllerRig controllerRig
+- int crabletAgentID
+- SpawnableObject crabletPlusSpawnableObject
+- string cureDescription
+- CureMachinePowerable cureMachine
+- int currClip
+- BaseWaveProfile currentWave
+- int currSpawn_floor1
+- int currSpawn_floor2
+- float currStep
+- int currWaveIndex
+- string customDescription
+- List<Arena_EnemyReference.EnemyType> customEnemyTypeList
+- GameObject customGameButtonObj
+- Il2CppReferenceArray<GameObject> defaultWeps
+- TMP_Text descriptionText
+- TMP_Text diffDescriptionText
+- Zombie_GameControl.Difficulty difficulty
+- TMP_Text diffText
+- string easyDesc
+- Il2CppReferenceArray<GameObject> enemyCheckMarkObjs
+- List<Arena_EnemyReference> enemyRefList
+- SpawnableObject fordSpawnableObject
+- GameObject freeModeParentObj
+- Zombie_GameControl.GameMode gameMode
+- TMP_Text gamePageDiffText
+- TMP_Text gamePlayDescriptionText
+- Coroutine gameTimerRoutine
+- Il2CppReferenceArray<GameObject> garageLevelObjs
+- GameObject gunLoadoutObj
+- GameObject hammerLoadout
+- string hardDesc
+- string harderDesc
+- string hardestDesc
+- HeadSFX headSFX
+- TMP_Text healthDesText
+- Player_Health.HealthMode healthMode
+- TMP_Text healthModeText
+- bool insideSpawnA
+- Zombie_GameControl instance
+- bool isSlowTime
+- bool isSpawning
+- bool isWaiting
+- bool isWaveOngoing
+- GameObject katanaLoadout
+- int killCount
+- TMP_Text killsText
+- SpawnableObject largeHealthSpawnable
+- GameObject lastEnemyIndicatorObj
+- Arena_EnemyReference lastEnemyRef
+- Coroutine lastEnemyRoutine
+- string limitedHealthDescription
+- bool limitedSlowMo
+- Coroutine limitedSlowMoRoutine
+- Zombie_GameControl.Loadout loadout
+- int loadoutIndex
+- Il2CppReferenceArray<GameObject> loadOutlines
+- Il2CppStructArray<bool> lockedDoors
+- string lockoutDescription
+- GameObject lockoutModeParentObj 
+- int maxConcurrentCount
+- float maxSlowMoJuice
+- string medDesc
+- GameObject meleeLoadoutObj
+- Il2CppReferenceArray<GameObject> meleeWeps
+- Coroutine missingEnemyRoutine
+- Il2CppReferenceArray<TMP_Text> modeTexts
+- Il2CppReferenceArray<MonomatItemSwapper> monoItemSwappers
+- string mortalHealthDescription
+- List<AudioClip> musicClipsList
+- Transform newZipSpawn
+- string noGunDescription
+- SpawnableObject nullBodySpawnableObject
+- SpawnableObject omniSpawnableObject
+- TriggerRefProxy playerProxy
+- GameObject playerRig
+- List<GameObject> prevPageObjList
+- Il2CppReferenceArray<GameObject> quarDoorLevelObjs
+- GameObject reclaimBinObj
+- Coroutine regenSlowMoRoutine
+- Il2CppReferenceArray<TMP_Text> remainingEnemiesTexts
+- Transform roofSpawn
+- Zombie_PlayerTrigger roofTriggerSpawn
+- Arena_RoundProfile roundProfile
+- SpawnableObject shortHairedFordSpawnableObject
+- Coroutine singleEnemyRoutine
+- Il2CppReferenceArray<SpriteRenderer> slowHubRends
+- TMP_Text slowMoButtonText
+- AudioClip slowMoCoolClip
+- float slowMoJuice
+- AudioClip slowMoJuicedClip
+- GameObject slowMoSlider
+- SpawnableObject smallHealthSpawnable
+- AudioMixerGroup softIntAudioGroup
+- GameObject spawnedEnemyObject
+- Transform spawnPoint
+- Coroutine spawnRoutine
+- Il2CppReferenceArray<Zombie_PlayerTrigger> spawnTriggers
+- Il2CppReferenceArray<GameObject> specialWeps
+- GameObject startGameButtonObj
+- float startTimer
+- Coroutine startTimerRoutine
+- string survivalDescription
+- GameObject swordLoadout
+- float timeBetweenWaves
+- Il2CppReferenceArray<SpriteRenderer> timeBipSprites
+- Control_GlobalTime timeControl
+- Il2CppReferenceArray<TMP_Text> timerTexts
+- int totalEnemyCount
+- int totalKillCount
+- Transform towerSpawn
+- GameObject uiGameDisplayPageObj
+- Il2CppReferenceArray<GameObject> uiInteractableObjs
+- GameObject uiSelectPageObj
+- AudioClip waveCompleteClip
+- AudioClip waveStartClip
+- Il2CppReferenceArray<TMP_Text> waveTexts
+- List<HandWeaponSlotReciever> weaponSlotRecieverList
+- BaseEnemyConfig zombieBaseConfig
+- SpawnableObject zombieSpawnableObject
+- BaseEnemyConfig zombieThrowerBaseConfig
+- Il2CppReferenceArray<Transform> zoneA_SpawnPoints
+- Il2CppReferenceArray<TransforM> zoneB_SpawnPoints
+- Zombie_GameControl _instance
+- Player_Health _playerHealth
